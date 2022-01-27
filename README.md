@@ -9,6 +9,6 @@ X X O
 O X X  
 
 Game 2:  
-. . .  
+. O .  
 . . .  
 . X .  

@@ -5,4 +5,4 @@ Tic Tac Toe
 
 O . X  
 . X .  
-. . .  
+O . .  

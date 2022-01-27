@@ -1,19 +1,20 @@
-# pic-16b-project
-Repository for PIC 16B project. 
+# Aca-coder's Project
 
-Tic Tac Toe
+### Eva Mars and Asmita Majumder
 
-Game 1:  
-O O X  
-X X O  
-O X X  
+## Abstract
 
-Game 2:  
-. O .  
-. . .  
-. X .  
+## Planned Deliverables
 
-Game 3: 
-. . .  
-. O .  
-. . . 
+## Resources Required
+
+## Tools and Skills Required
+
+## What You Will Learn
+
+## Risks
+
+## Ethics
+
+## Tentative Timeline
+

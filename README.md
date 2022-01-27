@@ -3,6 +3,6 @@ Repository for PIC 16B project.
 
 Tic Tac Toe
 
-O . X  
+O O X  
 X X O  
 O X .  

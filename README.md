@@ -8,6 +8,8 @@ The nuclear family has largely come to be seen as the “typical” US family, a
 
 ## Planned Deliverables
 
+Our main interface will be a webapp on which we will consolidate our summaries, predictions, and visualizations. In the "partial success" scenario, our webapp will contain interactive plots which will display the data from different perspectives depending on user input. In the "full success" version, there will additionally be a predictive model that projects how family structures will change in the coming years. This model will be based on the trends we observe in the data from prior years, and will ideally also factor in additional variables that may affect peoples' family-making decisions. 
+
 ## Resources Required
 
 The main need we have for our project is data. We planned to use census data, such as the table here:  

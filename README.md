@@ -47,10 +47,10 @@ We will have gathered the data and have a summary visualization in a jupyter not
 
 ### After four weeks
 
-We'll have a working web app containing summarized data and different visualizations based on user inputs 
+We'll have a working web app containing summarized data and different visualizations based on user inputs.
 
 ### After six weeks
 
-We'll have a working web app with same summarized data and visualizations as mentioned above, as well as predictive modeling 
+We'll have a working web app with same summarized data and visualizations as mentioned above, as well as predictive modeling.
 
 

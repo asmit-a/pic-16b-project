@@ -25,6 +25,8 @@ We will learn about how to find and gather data from a website, implement machin
 
 ## Risks
 
+One risk is having to deal with the extremely large datasets available via the census and deciding which parts of it are the most relevant to our project. Family structure is nuanced, and it will be challenging to create a comprehensive representation of it. Trying to create a predictive model also poses a considerable risk, as it may be hard to find a model that fits the observed patterns. Even if we do, we will also have to consider various outside factors that may influence the trends we are examining. 
+
 ## Ethics
 
 ## Tentative Timeline

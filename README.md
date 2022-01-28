@@ -43,7 +43,7 @@ In making our predictive model, we will also have to make a number of assumption
 
 ### After two weeks
 
-We will have gathered the data and have a summary visualization.
+We will have gathered the data and have a summary visualization in a jupyter notebook.
 
 ### After four weeks
 
@@ -52,5 +52,6 @@ We'll have a working web app containing summarized data and different visualizat
 ### After six weeks
 
 We'll have a working web app with the same summarized data and visualizations as mentioned above, as well as predictive modeling. 
+
 
 

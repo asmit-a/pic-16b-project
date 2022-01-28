@@ -43,7 +43,7 @@ In making our predictive model, we will also have to make a number of assumption
 
 ### After two weeks
 
-We will have gathered the data and have a summary visualization.
+We will have gathered the data and have a summary visualization in a jupyter notebook.
 
 ### After four weeks
 

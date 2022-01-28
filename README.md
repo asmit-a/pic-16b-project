@@ -31,6 +31,14 @@ One risk is having to deal with the extremely large datasets available via the c
 
 ## Ethics
 
+Many current legal and societal structures operate on the assumption that the nuclear family is the norm, often at the expense of those who do not reside in such family structures. We hope that our webapp will benefit such people, by bringing more awareness to how our perceptions of social norms, as well as the structures that are based on these perceptions, may be outdated. 
+
+Unfortunately, we run the risk of perpetuating stereotypes against certain family structures. For instance, if the data shows that certain types of family structures correlate to certain economic statuses, this may appear to imply the superiority of that type of family structure; it is important that we examine the nuances of any such correlations, and remember that correlation does not equal causation. 
+
+We do nonetheless hope that the world will became an overall better place because of the existence of our webapp. This is based on the assumption that having legal and social systems account for a wider variety of family structures will more appropriately address peoples' needs and help them.   
+
+In making our predictive model, we will also have to make a number of assumptions regarding what factors may influence peoples' family-making decisions (i.e., if/when to marry or have children). 
+
 ## Tentative Timeline
 
 ### After two weeks

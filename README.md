@@ -12,10 +12,16 @@ Our main interface will be a web app on which we will consolidate our summaries,
 
 ## Resources Required
 
-The main need we have for our project is data. We plan to use census data, such as the table here:  
-​​https://data.census.gov/cedsci/table?q=Household%20and%20Family&tid=ACSDP1Y2019.DP02
+The main need we have for our project is data. We plan to use census data, such as the table here: 
+```
+https://data.census.gov/cedsci/table?q=Household%20and%20Family&tid=ACSDP1Y2019.DP02
+```
 
-In order to access this data, we will use Census APIs via the CensusData package, details of which can be found here: https://pypi.org/project/CensusData/. The main feature of this package that we will use is the `censusdata.download` method, which takes in a given survey type, year, table, and region and retrieves the relevant census information in the form of a pandas dataframe. We have chosen this particular package because we found it to be the most intuitive, and because it allows us to access data as dataframes, which we have ample experience working with. 
+In order to access this data, we will use Census APIs via the CensusData package, details of which can be found here: 
+```
+https://pypi.org/project/CensusData/. 
+```
+The main feature of this package that we will use is the `censusdata.download` method, which takes in a given survey type, year, table, and region and retrieves the relevant census information in the form of a pandas dataframe. We have chosen this particular package because we found it to be the most intuitive, and because it allows us to access data as dataframes, which we have ample experience working with. 
 
 Beyond that, we shouldn't need an unusual amount of computing power, based on this kind of data. If we make the webpage public, we will need to make an account on a program that does that, such as Hiroku.
 

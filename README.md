@@ -23,6 +23,11 @@ https://pypi.org/project/CensusData/
 ```
 The main feature of this package that we will use is the `censusdata.download` method, which takes in a given survey type, year, table, and region and retrieves the relevant census information in the form of a pandas dataframe. We have chosen this particular package because we found it to be the most intuitive, and because it allows us to access data as dataframes, which we have ample experience working with. 
 
+In order to find tables of interest, we will use the following site: 
+```
+https://censusreporter.org/
+```
+
 Beyond that, we shouldn't need an unusual amount of computing power, based on this kind of data. If we make the webpage public, we will need to make an account on a program that does that, such as Hiroku.
 
 ## Tools and Skills Required

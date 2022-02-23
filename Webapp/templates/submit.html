@@ -1,0 +1,28 @@
+{% extends 'basic.html' %}
+
+{% block header %}
+  <h2>{% block title %}Submit a Message{% endblock %}</h2>
+{% endblock %}
+
+{% block content %}
+  <form method="post" enctype="multipart/form-data">
+    <fieldset>
+      <p>
+        Which table do you want to look at?
+      </p>
+      <input type="radio" name="table" id="one" value="MEDIAN AGE AT FIRST MARRIAGE" />
+      <label for="one">Median Age At First Marriage</label> <br>
+      <input type="radio" name="table" id="two" value="HOUSEHOLD TYPE (INCLUDING LIVING ALONE) BY RELATIONSHIP" />
+      <label for="two">Household Type</label> 
+    </fieldset>
+    <fieldset>
+      <input type="submit" value="Submit">
+      <input type="reset" value="Reset">
+    </fieldset>
+  </form>
+
+{% if done %}
+  <p>Message received!</p>
+{% endif %}
+
+{% endblock %}

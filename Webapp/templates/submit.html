@@ -1,7 +1,7 @@
 {% extends 'basic.html' %}
 
 {% block header %}
-  <h2>{% block title %}Submit a Message{% endblock %}</h2>
+  <h2>{% block title %}Request a Visualization{% endblock %}</h2>
 {% endblock %}
 
 {% block content %}
@@ -10,10 +10,12 @@
       <p>
         Which table do you want to look at?
       </p>
-      <input type="radio" name="table" id="one" value="MEDIAN AGE AT FIRST MARRIAGE" />
-      <label for="one">Median Age At First Marriage</label> <br>
-      <input type="radio" name="table" id="two" value="HOUSEHOLD TYPE (INCLUDING LIVING ALONE) BY RELATIONSHIP" />
-      <label for="two">Household Type</label> 
+      <input type="radio" name="table" id="marriage" value="marriage" />
+      <label for="marriage">Median Age At First Marriage</label> <br>
+      <input type="radio" name="table" id="household" value="household" />
+      <label for="household">Household Type</label> <br>
+      <input type="radio" name="table" id="divorce" value="divorce" />
+      <label for="divorce">Divorces in the Last Year</label> 
     </fieldset>
     <fieldset>
       <input type="submit" value="Submit">
@@ -21,8 +23,16 @@
     </fieldset>
   </form>
 
-{% if done %}
-  <p>Message received!</p>
+{% if table == "median" %}
+  <p>median</p>
+{% endif %}
+
+{% if table == "household" %}
+  <p>household</p>
+{% endif %}
+
+{% if table == "divorce" %}
+  <p>divorce</p>
 {% endif %}
 
 {% endblock %}

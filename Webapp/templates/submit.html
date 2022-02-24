@@ -18,9 +18,18 @@
       <label for="divorce">Divorces in the Last Year</label> 
     </fieldset>
     <fieldset>
+      Which state?
+      <br>
+      {% for state in states %}
+        <input type="radio" name="state" id="{{state}}" value="{{state}}" />
+        <label for="{{state}}">{{state}}</label> <br>
+      {% endfor %}
+    </fieldset>
+    <fieldset>
       <input type="submit" value="Submit">
       <input type="reset" value="Reset">
     </fieldset>
+
   </form>
 
 {% if table == "median" %}

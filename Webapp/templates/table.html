@@ -1,0 +1,20 @@
+{% extends 'basic.html' %}
+
+{% block header %}
+  <h2>{% block title %} Your table is ready! {% endblock %}</h2>
+{% endblock %}
+
+{% block content %}
+<p>
+  Here is the structure of the table you requested. These will also be the column names in the table.
+</p>
+{% for d in display %}
+  {{d}} <br>
+{% endfor %}
+
+<p>
+  You can download your CSV file 
+  <a href="{{ url_for('getCSV') }}">here</a>
+</p>
+
+{% endblock %}

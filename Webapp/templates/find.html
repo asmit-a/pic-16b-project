@@ -27,27 +27,6 @@
       <input type="reset" value="Reset">
     </fieldset>
 
-    <fieldset>
-      Which table do you want to download?
-      <br>
-      {% for name in names %}
-        <input type="radio" name="name" id="{{name}}" value="{{name}}" />
-        <label for="{{name}}">{{name}}</label> <br>
-      {% endfor %}
-    </fieldset>
-
   </form>
-
-{% if table == "median" %}
-  <p>median</p>
-{% endif %}
-
-{% if table == "household" %}
-  <p>household</p>
-{% endif %}
-
-{% if table == "divorce" %}
-  <p>divorce</p>
-{% endif %}
 
 {% endblock %}

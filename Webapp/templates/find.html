@@ -1,0 +1,53 @@
+{% extends 'basic.html' %}
+
+{% block header %}
+  <h2>{% block title %}Request a Table to Download{% endblock %}</h2>
+{% endblock %}
+
+{% block content %}
+  <form method="post" enctype="multipart/form-data">
+    <fieldset>
+      <label for="topic">Which topic do you want to look for?</label>
+      <input name="topic" id="topic">
+      
+    </fieldset>
+    <fieldset>
+      For which year?
+      <br>
+      <input type="radio" name="table" id="marriage" value="marriage" />
+      <label for="marriage">Median Age At First Marriage</label> <br>
+      <input type="radio" name="table" id="household" value="household" />
+      <label for="household">Household Type</label> <br>
+      <input type="radio" name="table" id="divorce" value="divorce" />
+      <label for="divorce">Divorces in the Last Year</label> 
+      
+    </fieldset>
+    <fieldset>
+      <input type="submit" value="Submit">
+      <input type="reset" value="Reset">
+    </fieldset>
+
+    <fieldset>
+      Which table do you want to download?
+      <br>
+      {% for name in names %}
+        <input type="radio" name="name" id="{{name}}" value="{{name}}" />
+        <label for="{{name}}">{{name}}</label> <br>
+      {% endfor %}
+    </fieldset>
+
+  </form>
+
+{% if table == "median" %}
+  <p>median</p>
+{% endif %}
+
+{% if table == "household" %}
+  <p>household</p>
+{% endif %}
+
+{% if table == "divorce" %}
+  <p>divorce</p>
+{% endif %}
+
+{% endblock %}

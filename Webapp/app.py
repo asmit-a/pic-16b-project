@@ -5,7 +5,7 @@ export FLASK_ENV=development; flask run
 
 '''
 
-from flask import Flask, render_template, g, request
+from flask import Flask, render_template, g, request, url_for, redirect, session, send_file
 
 import pandas as pd
 import censusdata
@@ -15,6 +15,8 @@ from plotly import express as px
 from plotly.io import write_html
 
 app = Flask(__name__)
+app.secret_key = "info"
+#searched = ""
 
 #Show base page with links to submit and view
 @app.route("/")
@@ -161,11 +163,6 @@ def make_divorce_table(state):
     
 
 
-    
-
-
-
-
 #Establish view page
 @app.route("/view")
 def view():
@@ -178,17 +175,29 @@ def view():
 @app.route("/find", methods=['POST', 'GET'])
 def find():
     if request.method == 'GET' :
-        return render_template('find.html')
+        #Open the page and include available years
+        return render_template('find.html', years = [2009, 2012, 2014, 2019])
     else:
-        topic = request.form["topic"]
-        year = 2019#request.form["state"]
-        names = see_tables(year, topic)
-        empty = (len(names) == 0)
-        return render_template('choose.html', names = names, empty = empty)
+        #Get inputs from the form
+        searched = request.form["topic"]
+        year = request.form["year"]
+
+        #Lookup the tables
+        session['names'] = see_tables(year, searched)
+
+        #Add variable to session for use in new page
+        session['searched'] = searched
+        session['year'] = int(year)
+
+        #Open next page to choose table
+        return redirect(url_for('choose'))
 
 
 def see_tables(year, keyword):
+    #Lookup the tables matching the keyword
     tables = censusdata.search('acs5', year,'concept', keyword)
+
+    #Get all the unique names excluding an unusually long one
     names = list(set([row[1] for row in tables[:len(tables)] if len(row[1]) < 500]))
     names.sort()
     return names
@@ -196,11 +205,75 @@ def see_tables(year, keyword):
 #Establish choose page
 @app.route("/choose", methods=['POST', 'GET'])
 def choose():
-    if request.method == 'GET' :
-        return render_template('choose.html')
+    if request.method == 'GET':
+        #Prepare choose page
+        empty = (len(session['names']) == 0)
+        return render_template('choose.html', names = session['names'], empty = empty, searched = session['searched'], year = session['year'])
     else:
-        topic = request.form["topic"]
-        year = 2019#request.form["state"]
-        names = see_tables(year, topic)
-        empty = (len(names) == 0)
-        return render_template('choose.html', names = names, empty = empty)
+        name = request.form["name"]
+
+        #Get the info about the selected table
+        codes, variables, display = get_code(session["searched"], name, session['year'])
+
+        #Use that to get the actual table
+        table = get_tables(codes, variables, [session['year']])
+        table.to_csv("table.csv") #download
+
+        #Save variable and go to final page
+        session['display'] = display
+        return redirect(url_for('table'))
+        
+        
+def get_code(name, full_name, year):
+    #list of tables
+    tables = censusdata.search('acs5', year,'concept', name)
+    
+    #We will return the following lists
+    codes = []
+    variables = []
+    display = []
+    
+    #For each item of table variable
+    for item in tables:
+        #We'll check if it's the one we want
+        if item[1] == full_name:
+            #The code is the first element
+            codes.append(item[0])
+            
+            #We'll split up the variable name in to levels
+            parts = item[2].split('!!')
+            
+            #The first part is the grand total
+            if len(parts) <= 2:
+                variable = "Grand total"
+                
+            #For all other variables
+            else:
+                #We'll separate the levels by dashes
+                variable = " - ".join(parts[2:])
+            
+            #We'll indent by the number of parts beyond the first 2 every variable has
+            line = "".join("___"*(len(parts)-2))
+            
+            #And then add the variable name
+            display.append(line + variable)
+            
+            #In order to avoid errors when the first character is a dollar sign
+            if variable[0] == "$":
+                variable = "\\" + variable
+                
+            variables.append(variable) 
+    return codes, variables, display
+
+@app.route('/table')
+def table():
+    #Will show structure of the table
+    return render_template('table.html', display = session['display'])
+
+@app.route('/getCSV')
+def getCSV():
+    #Will allow user to click on link to download csv
+    return send_file('table.csv',
+                     mimetype='text/csv',
+                     attachment_filename='table.csv',
+                     as_attachment=True)

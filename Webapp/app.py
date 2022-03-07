@@ -183,7 +183,8 @@ def find():
         topic = request.form["topic"]
         year = 2019#request.form["state"]
         names = see_tables(year, topic)
-        return render_template('find.html', names = names)
+        empty = (len(names) == 0)
+        return render_template('choose.html', names = names, empty = empty)
 
 
 def see_tables(year, keyword):
@@ -191,3 +192,15 @@ def see_tables(year, keyword):
     names = list(set([row[1] for row in tables[:len(tables)] if len(row[1]) < 500]))
     names.sort()
     return names
+
+#Establish choose page
+@app.route("/choose", methods=['POST', 'GET'])
+def choose():
+    if request.method == 'GET' :
+        return render_template('choose.html')
+    else:
+        topic = request.form["topic"]
+        year = 2019#request.form["state"]
+        names = see_tables(year, topic)
+        empty = (len(names) == 0)
+        return render_template('choose.html', names = names, empty = empty)

@@ -7,19 +7,24 @@
 {% block content %}
   {% if empty %}
     <p> 
-      There were no results. 
+      There were no results for {{searched}} in {{year}}.
     </p>
     <p>
-      Try to broaded your search, or make sure everything was spelled correctly.
+      Try to broaden your search, or make sure everything was spelled correctly. 
+      Note that some tables only appear in certain years.
     </p>
   {% else %}
+    <p>
+      The following contains all of the tables matching your description in alphabetical order.
+      If the list is too long you may want to refine your search.
+    </p>
     <form method="post" enctype="multipart/form-data">
       <fieldset>
         <p>
           Which table do you want to download?
         </p>
         {% for name in names %}
-          <input type="radio" name="name" id="{{name}}" value="{{name}}" />
+          <input type="radio" name="name" id="{{name}}" value="{{name}}" required/>
           <label for="{{name}}">{{name}}</label> <br>
         {% endfor %}
       </fieldset>

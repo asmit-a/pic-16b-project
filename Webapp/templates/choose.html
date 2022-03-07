@@ -1,0 +1,34 @@
+{% extends 'basic.html' %}
+
+{% block header %}
+  <h2>{% block title %} Choose Your Table to Download{% endblock %}</h2>
+{% endblock %}
+
+{% block content %}
+  {% if empty %}
+    <p> 
+      There were no results. 
+    </p>
+    <p>
+      Try to broaded your search, or make sure everything was spelled correctly.
+    </p>
+  {% else %}
+    <form method="post" enctype="multipart/form-data">
+      <fieldset>
+        <p>
+          Which table do you want to download?
+        </p>
+        {% for name in names %}
+          <input type="radio" name="name" id="{{name}}" value="{{name}}" />
+          <label for="{{name}}">{{name}}</label> <br>
+        {% endfor %}
+      </fieldset>
+
+      <fieldset>
+        <input type="submit" value="Submit">
+        <input type="reset" value="Reset">
+      </fieldset>
+
+    </form>
+  {% endif %}
+{% endblock %}

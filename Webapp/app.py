@@ -171,3 +171,23 @@ def make_divorce_table(state):
 def view():
     make_marriage_table("California")
     return render_template('marriage.html')
+
+
+
+#Establish find page
+@app.route("/find", methods=['POST', 'GET'])
+def find():
+    if request.method == 'GET' :
+        return render_template('find.html')
+    else:
+        topic = request.form["topic"]
+        year = 2019#request.form["state"]
+        names = see_tables(year, topic)
+        return render_template('find.html', names = names)
+
+
+def see_tables(year, keyword):
+    tables = censusdata.search('acs5', year,'concept', keyword)
+    names = list(set([row[1] for row in tables[:len(tables)] if len(row[1]) < 500]))
+    names.sort()
+    return names

@@ -22,7 +22,7 @@ This page simply displays a graph that shows how the median age of first marriag
 
 3. Request a Table to Download
 
-This page allows users to search for a topic, look through a list of relevant tables, and then examine and download a table of their choosing. 
+This page allows users to search for a topic, look through a list of relevant tables, and then examine and download a table of their choosing.
 
 ### What We Are Working On
 
@@ -36,8 +36,9 @@ We were also considering delving into modeling; we've seen some interesting tren
 
 2. So far, a lot of our project consists of just looking at and organizing past data; we've had some trouble adding originality to it. Is this okay? Do you have any advice for moving past this?
 
-3. Would you happen to know of any packages that would allow us to look at census data from before the 2010s? We've tried searching, but haven't had much luck finding useful results. 
+3. The download feature was a late addition as we realized it could be a useful feature. Are there any changes/additions in search functionality or table structure you'd recommend? 
 
+# Proposal
 
 ## Abstract
 

@@ -51,6 +51,12 @@ def submit():
         elif (table == "divorce"):
             make_divorce_table(state)
             return render_template("divorce.html")
+        elif (table == "multigen"):
+            make_multigen_table(state)
+            return render_template("multigen.html")
+        elif (table == "children"):
+            make_children_table(state)
+            return render_template("children.html")
 
 def get_tables(codes, names, years):
     tables = []
@@ -158,6 +164,50 @@ def make_divorce_table(state):
                 width = 800,
                 height = 600)
     write_html(fig, "templates/divorce.html")
+
+def make_multigen_table(state):
+    multigen = get_tables(['B11017_001E','B11017_002E','B11017_003E'],
+                                   ['Total','Multigenerational','Other'],
+                                   [2012,2019])
+
+    multigen = multigen[multigen['State']==state]
+
+    mg_percentage = multigen['Multigenerational'] / multigen['Total']
+    other_percentage = multigen['Other'] / multigen['Total']
+    year = multigen['Year']
+
+    multigen_percentages = pd.DataFrame({
+        'Multigenerational': mg_percentage,
+        'Other': other_percentage, 
+        'Year': year
+    })
+
+    multigen_percentages = multigen_percentages.round(decimals = 4)
+
+    fig = px.scatter(multigen_percentages, 
+                x = "Year", 
+                y = ["Multigenerational", "Other"],
+                title = "Multigenerational Households in " + state,
+                trendline = "ols", # ordinary least squares regression trendline
+                width = 800,
+                height = 600)
+    write_html(fig, "templates/multigen.html")
+
+def make_children_table(state):
+    children = get_tables(['B09002_001E','B09002_002E', 'B09002_009E','B09002_015E'], 
+                          ['Total','In Married-couple Households','In Single Male Households', 'In Single Female Households'], 
+                          [2009, 2014, 2019])
+
+    children = children[children["State"]==state]
+
+    fig = px.scatter(children, 
+                    x = "Year", 
+                    y = ["Total", "In Married-couple Households", "In Single Male Households", "In Single Female Households"],
+                    title = "Own Children Under 18 in CA",
+                    trendline = "ols", # ordinary least squares regression trendline
+                    width = 800,
+                    height = 600)
+    write_html(fig, "templates/children.html")
 
 
     

@@ -15,7 +15,11 @@
       <input type="radio" name="table" id="household" value="household" />
       <label for="household">Household Type</label> <br>
       <input type="radio" name="table" id="divorce" value="divorce" />
-      <label for="divorce">Divorces in the Last Year</label> 
+      <label for="divorce">Divorces in the Last Year</label> <br>
+      <input type="radio" name="table" id="multigen" value="multigen" />
+      <label for="multigen">Multigenerational Households</label> <br>
+      <input type="radio" name="table" id="children" value="children" />
+      <label for="children">Own Children Under 18</label>  <br>
     </fieldset>
     <fieldset>
       Which state?
@@ -31,17 +35,5 @@
     </fieldset>
 
   </form>
-
-{% if table == "median" %}
-  <p>median</p>
-{% endif %}
-
-{% if table == "household" %}
-  <p>household</p>
-{% endif %}
-
-{% if table == "divorce" %}
-  <p>divorce</p>
-{% endif %}
 
 {% endblock %}

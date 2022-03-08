@@ -1,10 +1,4 @@
 
-.ipynb_checkpoints/Scratch for census API-checkpoint.ipynb
-.DS_Store
-.ipynb_checkpoints/censusdata package scratch-checkpoint.ipynb
 .ipynb_checkpoints/*
-Webapp/templates/plot.html
-Webapp/templates/divorce.html
-Webapp/templates/household.html
-Webapp/templates/marriage.html
-Webapp/__pycache__/app.cpython-38.pyc
+
+.DS_Store

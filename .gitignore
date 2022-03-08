@@ -2,3 +2,9 @@
 .ipynb_checkpoints/*
 
 .DS_Store
+Webapp/table.csv
+Webapp/templates/divorce.html
+Webapp/templates/household.html
+Webapp/templates/marriage.html
+Webapp/templates/children.html
+Webapp/templates/multigen.html

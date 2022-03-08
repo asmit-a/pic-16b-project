@@ -20,8 +20,9 @@
       <label for="multigen">Multigenerational Households</label> <br>
       <input type="radio" name="table" id="children" value="children" />
       <label for="children">Own Children Under 18</label>  <br>
-    </fieldset>
-    <fieldset>
+    
+      <br>
+
       <label for="state">For which state?</label>
       <select name="state" id="state">
       {% for state in states %}
@@ -30,8 +31,9 @@
         <option value="{{state}}">{{state}}</option>
       {% endfor %}
       </select>
-    </fieldset>
-    <fieldset>
+    
+      <br><br>
+
       <input type="submit" value="Submit">
       <input type="reset" value="Reset">
     </fieldset>

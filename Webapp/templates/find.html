@@ -9,18 +9,15 @@
     <fieldset>
       <label for="topic">Which topic do you want to look for?</label>
       <input name="topic" id="topic" required>
-      
-    </fieldset>
-    <fieldset>
+
+        <br><br>
         For which year?
         <br>
         {% for y in years %}
             <input type="radio" name="year" id="{{y}}" value="{{y}}" required/>
             <label for="{{y}}">{{y}}</label> <br>
         {% endfor %}
-      
-    </fieldset>
-    <fieldset>
+      <br>
       <input type="submit" value="Submit">
       <input type="reset" value="Reset">
     </fieldset>

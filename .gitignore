@@ -8,3 +8,4 @@ Webapp/templates/household.html
 Webapp/templates/marriage.html
 Webapp/templates/children.html
 Webapp/templates/multigen.html
+Webapp/__pycache__/app.cpython-38.pyc

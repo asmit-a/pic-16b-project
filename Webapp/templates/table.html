@@ -7,8 +7,11 @@
 {% block content %}
 
 <p>
-  You can download your CSV file 
-  <a href="{{ url_for('getCSV') }}">here</a>
+  You can download the CSV file
+  <a href="{{ url_for('getCSV') }}">here</a> for:
+</p>
+<p>
+  {{name}}
 </p>
 <br>
 <section>

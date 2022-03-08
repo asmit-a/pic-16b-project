@@ -260,10 +260,10 @@ def choose():
         empty = (len(session['names']) == 0)
         return render_template('choose.html', names = session['names'], empty = empty, searched = session['searched'], year = session['year'])
     else:
-        name = request.form["name"]
+        session['name'] = request.form["name"]
 
         #Get the info about the selected table
-        codes, variables, session['display'], session['even'] = get_code(session["searched"], name, session['year'])
+        codes, variables, session['display'], session['even'] = get_code(session["searched"], session['name'], session['year'])
 
         #Use that to get the actual table
         table = get_tables(codes, variables, [session['year']])
@@ -369,7 +369,7 @@ def get_code(topic, full_name, year):
 @app.route('/table')
 def table():
     #Will show structure of the table
-    return render_template('table.html', display = session['display'], even = session['even'])
+    return render_template('table.html', display = session['display'], even = session['even'], name = session['name'])
 
 @app.route('/getCSV')
 def getCSV():

@@ -1,7 +1,8 @@
 {% extends 'basic.html' %}
 
 {% block header %}
-  <h2>{% block title %} Choose Your Table to Download{% endblock %}</h2>
+  <h2>{% block title %}Request a Table to Download{% endblock %}</h2>
+  <h3>Choose Your Table to Download<h3>
 {% endblock %}
 
 {% block content %}
@@ -20,9 +21,7 @@
     </p>
     <form method="post" enctype="multipart/form-data">
       <fieldset>
-        <p>
-          Which table do you want to download?
-        </p>
+        <label for="name" class="question">Which table do you want to download?</label> <br>
         {% for name in names %}
           <input type="radio" name="name" id="{{name}}" value="{{name}}" required/>
           <label for="{{name}}">{{name}}</label> <br>

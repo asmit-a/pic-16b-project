@@ -1,14 +1,16 @@
 <!doctype html>
 <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-<title>Family Demographics</title>
-<nav>
+<section id="top">
+    <title>{% block title %}{% endblock %} - Family Demographics</title>
     <h1>Family Demographics</h1>
-    <ul>
-        <li><a href="{{ url_for('submit') }}">Request a Visualization</a></li>
-        <li><a href="{{ url_for('view') }}">View California Marriage Visualization</a></li>
-        <li><a href="{{ url_for('find') }}">Request a Table to Download</a></li>
-    </ul>
-</nav>
+    <nav>
+        <ul>
+            <li><a href="{{ url_for('view') }}">View California Marriage Visualization</a></li>
+            <li><a href="{{ url_for('submit') }}">Request a Visualization</a></li>
+            <li><a href="{{ url_for('find') }}">Request a Table to Download</a></li>
+        </ul>
+    </nav>
+</section>
 <section class="content">
     <header>
         {% block header %}{% endblock %}

@@ -2,21 +2,21 @@
 
 {% block header %}
   <h2>{% block title %}Request a Table to Download{% endblock %}</h2>
+  <h3>Search for a table<h3>
 {% endblock %}
 
 {% block content %}
   <form method="post" enctype="multipart/form-data">
     <fieldset>
-      <label for="topic">Which topic do you want to look for?</label>
+      <label for="topic" class="question">Which topic do you want to look for?</label>
       <input name="topic" id="topic" required>
-
-        <br><br>
-        For which year?
-        <br>
-        {% for y in years %}
-            <input type="radio" name="year" id="{{y}}" value="{{y}}" required/>
-            <label for="{{y}}">{{y}}</label> <br>
-        {% endfor %}
+      <br><br>
+      <label class="question">For which year?</label>
+      <br>
+      {% for y in years %}
+        <input type="radio" name="year" id="{{y}}" value="{{y}}" required/>
+        <label for="{{y}}">{{y}}</label> <br>
+      {% endfor %}
       <br>
       <input type="submit" value="Submit">
       <input type="reset" value="Reset">

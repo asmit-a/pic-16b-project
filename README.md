@@ -2,6 +2,43 @@
 
 by Eva Mars and Asmita Majumder
 
+## Pre-submission Notes
+
+### What We Have So Far
+
+A lot of the files in our repository consists of scratch work that we used to try and figure our project out. The only real "clean" file in our main repository is the file "censusdata presentation.ipynb", which contains the Jupyter Notebook we used for our first project update presentation. This Notebook demonstrates use of the census API, and contains visualizations of trends that can be observed in certain pieces of census data over a decade or so. 
+
+The main feature of our project is the web app, which can be found in the folder titled "Webapp". We still haven't been able to set it up online, but it can be run on locally by downloading the "Webapp" folder, changing the directory to this folder's location, and then running the usual flask commands (i.e. "set FLASK_ENV=development" followed by "flask run").
+
+This web app contains, at the moment, three pages: 
+
+1. Request a Visualization
+
+This allows the user to select one of 5 tables which they wish to observe, as well as a U.S. state. Once they have made their selections and clicked "Submit", they are taken to a plot showing how the data in their chosen table has changed over time in the selected state. 
+
+2. View California Marriage Visualization
+
+This page simply displays a graph that shows how the median age of first marriage in CA has changed between 2009 and 2019.  
+
+3. Request a Table to Download
+
+This page allows users to search for a topic, look through a list of relevant tables, and then examine and download a table of their choosing. 
+
+### What We Are Working On
+
+We plan to add some CSS to our web app and make it more visually appealing. 
+
+We were also considering delving into modeling; we've seen some interesting trends in the data, and it would be cool to be able to translate these trends from the past into a projection for the future. However, we are not really sure how to approach this type of modeling, especially with a topic that is so complex and that we have such little data for. It's been a bit frustrating only being able to access a decade's worth of data, as this has made it harder to distinguish whether changes are part of larger trends or just flukes. 
+
+### Questions
+
+1. Do you have any advice regarding how we could implement a model that predicts what family structures will look like in the future, or is this too complicated of an endeavour? 
+
+2. So far, a lot of our project consists of just looking at and organizing past data; we've had some trouble adding originality to it. Is this okay? Do you have any advice for moving past this?
+
+3. Would you happen to know of any packages that would allow us to look at census data from before the 2010s? We've tried searching, but haven't had much luck finding useful results. 
+
+
 ## Abstract
 
 The nuclear family has largely come to be seen as the “typical” US family, and this assumption is reflected in legal policies and mainstream media alike. However, as divorce rates are increasing and Americans are delaying marriage (or forgoing it altogether), the era of the nuclear family may also be coming to a close. In this project, we will use census data to examine how family structures have been evolving over the past several decades. We will construct several detailed summary visualizations which will display different aspects of the data depending on user input. All of this information will be collected and displayed on a web app. 

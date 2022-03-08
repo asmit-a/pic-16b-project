@@ -263,25 +263,30 @@ def choose():
         name = request.form["name"]
 
         #Get the info about the selected table
-        codes, variables, display = get_code(session["searched"], name, session['year'])
+        codes, variables, session['display'], session['even'] = get_code(session["searched"], name, session['year'])
 
         #Use that to get the actual table
         table = get_tables(codes, variables, [session['year']])
         table.to_csv("table.csv") #download
 
-        #Save variable and go to final page
-        session['display'] = display
+        #Go to final page
         return redirect(url_for('table'))
         
         
-def get_code(name, full_name, year):
+def get_code(topic, full_name, year):
     #list of tables
-    tables = censusdata.search('acs5', year,'concept', name)
+    tables = censusdata.search('acs5', year,'concept', topic)
     
     #We will return the following lists
     codes = []
     variables = []
-    display = []
+
+    #And make a display with unordered lists 
+    display = "<ul>"
+    indents = []
+
+    #We will also make an unordered list displaying the full variable names
+    even = "<ul>"
     
     #For each item of table variable
     for item in tables:
@@ -292,33 +297,79 @@ def get_code(name, full_name, year):
             
             #We'll split up the variable name in to levels
             parts = item[2].split('!!')
+
+            #All variables have the same first two parts
+            indent = len(parts)-2
             
-            #The first part is the grand total
-            if len(parts) <= 2:
+            #If it has no further parts it's the total
+            if indent == 0:
                 variable = "Grand total"
                 
             #For all other variables
             else:
                 #We'll separate the levels by dashes
                 variable = " - ".join(parts[2:])
+
+            #Now we want to make a display with html tags for nesting lists
+            #We'll get the previous indent
+            previous = 0
+            if len(indents):
+                previous = indents[-1]
+
+            #Close out any lists
+            while indent < previous:
+                display += "</li></ul>"
+                previous = previous - 1
             
-            #We'll indent by the number of parts beyond the first 2 every variable has
-            line = "".join("___"*(len(parts)-2))
-            
-            #And then add the variable name
-            display.append(line + variable)
+            #If we need to indent more
+            if indent > previous:
+                #If there are no items already, we'll start one
+                if len(indents) == 0:
+                    display += "<li>"
+
+                #Make another list and add the item
+                display += f"<ul><li>{parts[-1]}"
+
+            #If we are at the same indentation level
+            elif indent == previous:
+                #If there are items, we'll close out the previous one
+                if len(indents):
+                    display += "</li>"
+                #And add the next item
+                display += f"<li>{parts[-1]}"
+                
+            #We'll add the variable as a list item to our simple display
+            even += f"<li>{variable}</li>"
+
+            #Add indent
+            indents.append(indent)
             
             #In order to avoid errors when the first character is a dollar sign
             if variable[0] == "$":
+                #This will make the table title print better
                 variable = "\\" + variable
-                
             variables.append(variable) 
-    return codes, variables, display
+
+    #If are items
+    if len(indents):
+        #Get the current indentation
+        previous = indents[-1]
+
+        #While it is indented
+        while previous >= 0:
+            #Close out lists
+            display += "</li></ul>"
+            previous = previous - 1
+    
+    #Close the even list
+    even += "</ul>"
+
+    return codes, variables, display, even
 
 @app.route('/table')
 def table():
     #Will show structure of the table
-    return render_template('table.html', display = session['display'])
+    return render_template('table.html', display = session['display'], even = session['even'])
 
 @app.route('/getCSV')
 def getCSV():

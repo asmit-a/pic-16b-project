@@ -5,19 +5,20 @@
 {% endblock %}
 
 {% block content %}
-<p>
-  Here is the structure of the table you requested:
-</p>
-{{display | safe }}
-<br>
-<p>
-  These are the names of the variables that will be in the csv:
-</p>
-{{even | safe}}
 
 <p>
   You can download your CSV file 
   <a href="{{ url_for('getCSV') }}">here</a>
 </p>
+<br>
+<section>
+  Here is the structure of the table:
+  {{display | safe }}
+</section>
+<br>
+<section>
+  And these will be the column names in the csv:
+  {{even | safe}}
+</section>
 
 {% endblock %}

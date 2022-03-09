@@ -226,7 +226,8 @@ def view():
 def find():
     if request.method == 'GET' :
         #Open the page and include available years
-        return render_template('find.html', years = [2009, 2012, 2014, 2019])
+        years = range(2009, 2020)
+        return render_template('find.html', years = years)
     else:
         #Get inputs from the form
         searched = request.form["topic"]
@@ -287,6 +288,7 @@ def get_code(topic, full_name, year):
 
     #We will also make an unordered list displaying the full variable names
     even = "<ul>"
+    even += "<li>State</li>" #First column is state
     
     #For each item of table variable
     for item in tables:
@@ -303,7 +305,8 @@ def get_code(topic, full_name, year):
             
             #If it has no further parts it's the total
             if indent == 0:
-                variable = "Grand total"
+                #Set to last part (typically Total)
+                variable = parts[-1]
                 
             #For all other variables
             else:
@@ -361,8 +364,8 @@ def get_code(topic, full_name, year):
             display += "</li></ul>"
             previous = previous - 1
     
-    #Close the even list
-    even += "</ul>"
+    even += "<li>Year</li>" #Last column is the year
+    even += "</ul>" #Close the even list
 
     return codes, variables, display, even
 

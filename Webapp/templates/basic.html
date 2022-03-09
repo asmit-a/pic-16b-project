@@ -3,7 +3,13 @@
 <section id="top">
     <title>{% block title %}{% endblock %} - Family Demographics</title>
     <h1>Family Demographics</h1>
-    <p id="blurb">The data displayed on this web app is based on the US Census's American Community Survey 5-year estimates, which is an ongoing survey that provides annual estimates based on data collected over 5-year periods. Using multiyear estimates allows for increased statistical reliability of data, particularly for regions and subgroups that have smaller populations. </p>
+    <div id="blurb">
+        <p>
+            The data displayed on this web app is based on the US Census's American Community Survey 5-year estimates, 
+            which is an ongoing survey that provides annual estimates based on data collected over 5-year periods. 
+            Using multiyear estimates allows for increased statistical reliability of data, particularly for regions and subgroups that have smaller populations. 
+        </p>
+    </div>
     <nav>
         <ul>
             <li><a href="{{ url_for('view') }}">View California Marriage Visualization</a></li>

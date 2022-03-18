@@ -23,7 +23,7 @@ This page is simple, displaying a `Plotly` graph that shows how the median age o
 
 ### Request A Visualization
 
-This page allows the user to see how different aspects of family structure in certain states has changed over time. The user is first asked to select a table whose data they would like to ac_ess, as well as a state. Upon clicking the "Submit" button, they will then be redirected to a `Plotly` plot that displays how data from their chosen data has changed over the previous years. 
+This page allows the user to see how different aspects of family structure in certain states has changed over time. The user is first asked to select a table whose data they would like to access, as well as a state. Upon clicking the "Submit" button, they will then be redirected to a `Plotly` plot that displays how data from their chosen data has changed over the previous years. 
 
 ### Download Tables
 

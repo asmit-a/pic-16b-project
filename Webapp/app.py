@@ -381,3 +381,26 @@ def getCSV():
                      mimetype='text/csv',
                      attachment_filename='table.csv',
                      as_attachment=True)
+
+@app.route("/choropleths", methods=['POST', 'GET'])
+def choose_choropleth():
+    if request.method == 'GET' :
+        choropleth_options = ['Median Age of Marriage (Male)', 'Median Age of Marriage (Female)',
+                   'Percentage of Married-Couple Households',
+                   'Percentage of Population Divorced in Last Year', 'Percentage of Population Never Married']
+        return render_template("choropleths.html", choropleth_options = choropleth_options)
+    else:
+        chosen_choropleth = request.form["choropleth_options"]
+        if (chosen_choropleth == 'Median Age of Marriage (Male)'):
+            return render_template("median_age_male_choro.html")
+        elif (chosen_choropleth == 'Median Age of Marriage (Female)'):
+            return render_template("median_age_female_choro.html")
+        elif (chosen_choropleth == 'Percentage of Married-Couple Households'):
+            return render_template("married_couple_choro.html")
+        elif (chosen_choropleth == 'Percentage of Population Divorced in Last Year'):
+            return render_template("divorces_choro.html")
+        elif (chosen_choropleth == 'Percentage of Population Never Married'):
+            return render_template("never_married_choro.html")
+        
+
+

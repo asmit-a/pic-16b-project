@@ -27,7 +27,7 @@ This page allows the user to see how different aspects of family structure in ce
 
 ### Download Tables
 
-This page allows the user to search for tables of interest and then download them as CSV files. First, the user is prompted to search for a topic of interest. Possible topics include "household", "marriage", and "divorce". They are then presented with a list of possible tables that concern their topic of interest. Upon choosing one of these tables, the user is taken to a page that contains a link they can press in order to download the relevant data and outlines the way this data is organized in their downloaded table. 
+This page allows the user to search for tables of interest and then download them as CSV files. First, the user is prompted to search for a topic of interest. Possible topics include "household", "marriage", and "divorce". They are then presented with another form containing a list of tables related to their topic of interest. Upon choosing one of these tables, the user is taken to a page that contains a link to download the table formatted into a CSV and below outlines the way the variables in the table are organized. 
 
 
 

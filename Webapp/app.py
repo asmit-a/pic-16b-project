@@ -9,6 +9,7 @@ from flask import Flask, render_template, g, request, url_for, redirect, session
 
 import pandas as pd
 import censusdata
+import itertools
 
 import plotly.io as pio
 from plotly import express as px
@@ -226,8 +227,8 @@ def view():
 def find():
     if request.method == 'GET' :
         #Open the page and include available years
-        years = range(2009, 2020)
-        return render_template('find.html', years = years)
+        session['all_years'] = list(range(2009, 2020))
+        return render_template('find.html', years = session['all_years'])
     else:
         #Get inputs from the form
         searched = request.form["topic"]
@@ -297,8 +298,9 @@ def get_code(topic, full_name, year):
             #The code is the first element
             codes.append(item[0])
             
-            #We'll split up the variable name in to levels
-            parts = item[2].split('!!')
+            #We'll remove colons and split up the variable name in to levels
+            var = item[2].replace(':', '')
+            parts = var.split('!!')
 
             #All variables have the same first two parts
             indent = len(parts)-2
@@ -374,12 +376,12 @@ def table():
     #Will show structure of the table
     return render_template('table.html', display = session['display'], even = session['even'], name = session['name'])
 
-@app.route('/getCSV')
-def getCSV():
+@app.route('/getCSV/<file_name>')
+def getCSV(file_name):
     #Will allow user to click on link to download csv
-    return send_file('table.csv',
+    return send_file(file_name,
                      mimetype='text/csv',
-                     attachment_filename='table.csv',
+                     attachment_filename=file_name,
                      as_attachment=True)
 
 @app.route("/choropleths", methods=['POST', 'GET'])
@@ -402,5 +404,57 @@ def choose_choropleth():
         elif (chosen_choropleth == 'Percentage of Population Never Married'):
             return render_template("never_married_choro.html")
         
+@app.route('/other')
+def other():
+    #Get the grouping variables
+    g = other_years(session["searched"], session["name"])
+    return render_template('other.html', groups = g)
 
+def format_years(years):
+    #If there is only one year, no and is required
+    if len(years) == 1:
+        return str(years[0])
+    
+    #If there are two years, there's no oxford comma
+    elif len(years) == 2:
+        return str(years[0]) + " and " + str(years[1])
 
+    #Otherwise we'll add each year followed by a comma until the last 
+    text = ""
+    for i in range(len(years) - 1):
+        text += str(years[i]) + ", "
+    
+    #When we include the and
+    return text + "and " + str(years[-1])
+
+def other_years(topic, full_name):
+    #Stores the tuples of all years that have the table
+    valid = []
+    
+    #Look in all years and gather info
+    for y in session['all_years']:
+        tup = get_code(topic, full_name, y)
+        
+        #If the table is present, add it to valid with year
+        if tup[0] != []:
+            valid.append((tup, y))
+    
+    #Group the tables that are identical
+    an_iterator = itertools.groupby(valid, lambda x:x[0])
+
+    #Stores each group
+    groups = []
+
+    #For each group
+    for key, group in an_iterator:
+        #Get the years include it
+        years = [g[1] for g in list(group)]
+
+        table = get_tables(key[0], key[1], years)
+        num = len(groups) + 1
+        file_name = "table_g" + str(num) + ".csv"
+        table.to_csv(file_name) #download
+        
+        #Add the display and nicely formatted years
+        groups.append([key[2], format_years(years), num, file_name])
+    return groups

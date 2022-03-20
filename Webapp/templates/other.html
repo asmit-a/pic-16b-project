@@ -1,0 +1,33 @@
+{% extends 'basic.html' %}
+
+{% block header %}
+  <h2>{% block title %}Request a Table to Download{% endblock %}</h2>
+  <h3>Your table in other years</h3>
+{% endblock %}
+
+{% block content %}
+
+<p>
+    This function has seached for this table in all the other years the tables are available, 2009-2019.
+    Only exact matches of table name and code will be found, so sometimes it is only available in the one year.
+    Below the tables are grouped by those that have the same structure, as sometimes the variables change over the years.
+    They are separated here, but you can use your judgement on how combining later if you choose.
+    For your convenience, you can download a csv with the data from all the years with the exact same format at the bottom of each group's section.
+</p>
+
+{% for display, years, num, filename in groups %}
+    <h4>Group {{num}}:</h4>
+    <p>
+        In the years {{years}} the table has this format:
+    </p>
+    <section>
+        {{display | safe }}
+    </section>
+    <p>
+        You can download this table
+        <a href="{{ url_for('getCSV', file_name=filename)}}">here</a>
+    </p>
+    <br>
+{% endfor %}
+
+{% endblock %}

@@ -6,10 +6,15 @@
 {% endblock %}
 
 {% block content %}
-
+<p>
+  <b>New:</b> If you want to see this table in other years, click
+  <a href="{{ url_for('other')}}"> here</a>. <br>
+  Note: It may take up to 30 seconds to load, as it searches for and gathers the data.
+</p>
 <p>
   You can download the CSV file
-  <a href="{{ url_for('getCSV') }}">here</a> for:
+  <a href="{{ url_for('getCSV', file_name='table.csv')}}">here</a>
+  <!--a href="{{ url_for('getCSV', file_name='table.csv') }}">here</a--> for:
 </p>
 <p>
   {{name}}

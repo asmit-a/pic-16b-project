@@ -24,7 +24,7 @@ Our webapp has four pages the user can navigate directly to:
 
 This page allows the use to choose from five variables in a drop down menu. Once they make their selection and submit, they will be taken to a `Plotly` choropleth plot that shows that variable in each state in a colored map.
 
-### View California Marriage Visualization**
+### View California Marriage Visualization
 
 This page is simple, displaying a `Plotly` graph that shows how the median age of first marriage in California has changed over time. This page offers little functionality beyond the user being able to interact with the plot, and is primarily present for purpose of showing users what kinds of visualizations the user can expect from our next page.
 
@@ -52,5 +52,13 @@ Upon submiting their selected table, the user is taken to the page describing th
 
 There is now another feature the user can navigate to from the "Your table is ready!" page. This page looks up the selected table in other years and groups them by their structure. The user can then download a table for each group of years with the same structure.
 
+## Limitations
 
+### Limitations with data
+Our biggest limitation is the data available with the censusdata package. We only have access to data 10 years apart, which limits the ability to see trends. 
+
+It should also be noted that as ACS5 data is collected on a rolling basis, data from overlapping periods should not be directly compared.
+
+### Limitations with table download
+The download a table feature is more limited than working directly with an API. For example, a user can currently only download the data broken down by state, but by working directly with the package, the data can be broken down further, such as by county in a specific state. 
 

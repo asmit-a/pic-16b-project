@@ -54,7 +54,7 @@ There is now another feature the user can navigate to from the "Your table is re
 
 ## Limitations
 
-### Limitations with data
+### Limitations with the data
 Our biggest limitation is the data available with the censusdata package. We only have access to data 10 years apart, which limits the ability to see trends. 
 
 It should also be noted that as ACS5 data is collected on a rolling basis, data from overlapping periods should not be directly compared.

@@ -6,7 +6,7 @@ body {
     font-family: 'trebuchet MS', arial, sans-serif;
 }
 
-/*Show purper to same blue gradient for top section*/
+/*Show purple to same blue gradient for top section*/
 #top {
     background: linear-gradient(to bottom, rgb(64, 14, 87), rgb(207, 234, 253));
     color: white;

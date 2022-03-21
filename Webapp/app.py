@@ -389,7 +389,9 @@ def choose_choropleth():
     if request.method == 'GET' :
         choropleth_options = ['Median Age of Marriage (Male)', 'Median Age of Marriage (Female)',
                    'Percentage of Married-Couple Households',
-                   'Percentage of Population Divorced in Last Year', 'Percentage of Population Never Married']
+                   'Percentage of Population Divorced in Last Year', 'Percentage of Population Never Married',
+                   'Percentage of Population in Multigenerational Households',
+                   'Percentage of Children in Married-Couple Households','Percentage of Children in Single-Male Households', 'Percentage of Children in Single-Female Households']
         return render_template("choropleths.html", choropleth_options = choropleth_options)
     else:
         chosen_choropleth = request.form["choropleth_options"]
@@ -403,6 +405,16 @@ def choose_choropleth():
             return render_template("divorces_choro.html")
         elif (chosen_choropleth == 'Percentage of Population Never Married'):
             return render_template("never_married_choro.html")
+        elif (chosen_choropleth == 'Percentage of Population in Multigenerational Households'):
+            return render_template("multigen_choro.html")
+        elif (chosen_choropleth == 'Percentage of Children in Married-Couple Households'):
+            return render_template("married_household_children_choro.html")
+        elif (chosen_choropleth == 'Percentage of Children in Single-Male Households'):
+            return render_template("male_household_children_choro.html")
+        elif (chosen_choropleth == 'Percentage of Children in Single-Female Households'):
+            return render_template("female_household_children_choro.html")
+        
+        
         
 @app.route('/other')
 def other():

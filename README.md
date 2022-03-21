@@ -20,17 +20,18 @@ Our project uses the US Census's American Community Survey 5-year estimates, whi
 
 Our webapp has four pages the user can navigate directly to:
 
-### Request a Choropleth
-
-This page allows the use to choose from five variables in a drop down menu. Once they make their selection and submit, they will be taken to a `Plotly` choropleth plot that shows that variable in each state in a colored map.
 
 ### View California Marriage Visualization
 
 This page is simple, displaying a `Plotly` graph that shows how the median age of first marriage in California has changed over time. This page offers little functionality beyond the user being able to interact with the plot, and is primarily present for purpose of showing users what kinds of visualizations the user can expect from our next page.
 
-### Request A Visualization
+### Request A State-wide Visualization
 
-This page allows the user to see how different aspects of family structure in certain states has changed over time. The user is first asked to select a table whose data they would like to access, as well as a state. Upon clicking the "Submit" button, they will then be redirected to a `Plotly` plot that displays how data from their chosen data has changed over the previous years. 
+This page allows the user to see how different aspects of family structure in certain states has changed over time. The user is first asked to select a table whose data they would like to access, as well as a state. Upon clicking the "Submit" button, they will then be redirected to a `Plotly` plot that displays how data from their chosen data has changed over the previous years. The `Plotly` plot will be in the form of either a bar graph or a scatter plot. 
+
+### Request a Country-wide Visualization
+
+This page allows the use to choose from five variables in a drop down menu. Once they make their selection and submit, they will be taken to a `Plotly` choropleth plot that shows that variable in each state in a colored map. This allows users to see how certain categories of data have changed over the United States as a whole over time. 
 
 ### Request a Table to Download
 
